@@ -5,7 +5,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.bouvimbert.bubble.bubblegenerator.BubbleGenerator;
-import org.bouvimbert.bubble.bubblenbgenerator.impl.BubbleNbLinearGenerator;
+import org.bouvimbert.bubble.bubblenbgenerator.BubbleNbGenerator;
 import org.bouvimbert.bubble.entity.Bubble;
 
 public class BubbleGeneratorImpl implements BubbleGenerator {
@@ -14,7 +14,7 @@ public class BubbleGeneratorImpl implements BubbleGenerator {
 	@Override
 	public List<Bubble> generateBubbleList(int difficulty) {
 		current = new ArrayList<Bubble>();
-		int nbBubble =  BubbleNbLinearGenerator.generateBubbleNb(difficulty);
+		int nbBubble =  BubbleNbGenerator.genLinearBubbleNb(difficulty);
 		int i = 0;
 		for(i=lastIndex;i<lastIndex+nbBubble;i++) {
 			if(i==1) {

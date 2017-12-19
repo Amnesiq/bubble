@@ -1,7 +1,7 @@
 package org.bouvimbert.bubble.bubblenbgenerator;
 
-public abstract class BubbleNbGenerator {
-	public static int generateBubbleNb(int nb) {
-		return 0;
+public final class BubbleNbGenerator {
+	public static int genLinearBubbleNb(int nb) {
+		return nb+1;
 	}
 }
