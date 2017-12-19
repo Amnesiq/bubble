@@ -23,7 +23,7 @@ public class Bubble {
 	}
 	@Override
 	public String toString() {
-		return "Numero : " + this.numero + "Couleur : " + this.couleur;
+		return "Numero : " + this.numero + " Couleur : " + this.couleur;
 	}
 	
 	
