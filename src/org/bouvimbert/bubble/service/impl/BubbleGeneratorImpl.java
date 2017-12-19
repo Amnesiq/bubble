@@ -18,11 +18,12 @@ public class BubbleGeneratorImpl implements BubbleGenerator {
 	public BubbleGeneratorImpl() {
 		current = new HashMap<String,List<Bubble>>();
 	}
+	
 	@Override
 	public HashMap<String,List<Bubble>> generateBubbleList(int difficulty) {
 		List<Bubble> lbV = new ArrayList<Bubble>();
 		List<Bubble> lbR = new ArrayList<Bubble>();
-		int nbBubble =  BubbleNbGenerator.genLinearBubbleNb(difficulty);
+		int nbBubble =  BubbleNbGenerator.genLinearBblNb(difficulty);
 		int i = 0;
 		for(i=lastIndex;i<lastIndex+nbBubble;i++) {
 			if(i==lastIndex) {
@@ -50,6 +51,7 @@ public class BubbleGeneratorImpl implements BubbleGenerator {
 		else
 			return "Rouge";
 	}
+	
 	@Override
 	public void display() {
 		Set<Entry<String,List<Bubble>>> set = current.entrySet();
