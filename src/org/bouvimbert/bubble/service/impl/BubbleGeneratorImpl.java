@@ -1,29 +1,43 @@
-package org.bouvimbert.bubble.bubblegenerator.impl;
+package org.bouvimbert.bubble.service.impl;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map.Entry;
+import java.util.Set;
 
-import org.bouvimbert.bubble.bubblegenerator.BubbleGenerator;
-import org.bouvimbert.bubble.bubblenbgenerator.BubbleNbGenerator;
 import org.bouvimbert.bubble.entity.Bubble;
+import org.bouvimbert.bubble.service.BubbleGenerator;
+import org.bouvimbert.bubble.utils.BubbleNbGenerator;
 
 public class BubbleGeneratorImpl implements BubbleGenerator {
-	private List<Bubble> current=null;
+	private HashMap<String,List<Bubble>> current=null;
 	private int lastIndex=0;
+	
+	public BubbleGeneratorImpl() {
+		current = new HashMap<String,List<Bubble>>();
+	}
 	@Override
-	public List<Bubble> generateBubbleList(int difficulty) {
-		current = new ArrayList<Bubble>();
+	public HashMap<String,List<Bubble>> generateBubbleList(int difficulty) {
+		List<Bubble> lbV = new ArrayList<Bubble>();
+		List<Bubble> lbR = new ArrayList<Bubble>();
 		int nbBubble =  BubbleNbGenerator.genLinearBubbleNb(difficulty);
 		int i = 0;
 		for(i=lastIndex;i<lastIndex+nbBubble;i++) {
-			if(i==1) {
-				current.add(new Bubble(i+1,"Verte"));
+			if(i==lastIndex) {
+				lbV.add(new Bubble(i,"Verte"));
 			}
 			else {
-				current.add(new Bubble(i+1,rdmColor()));
+				String color=rdmColor();
+				if(color=="Verte")
+					lbV.add(new Bubble(i,color));
+				if(color=="Rouge")
+					lbR.add(new Bubble(i,color));
 			}
 		}
+		current.put("Rouge", lbR);
+		current.put("Verte", lbV);
 		lastIndex=i;
 		return current;
 	}
@@ -38,9 +52,11 @@ public class BubbleGeneratorImpl implements BubbleGenerator {
 	}
 	@Override
 	public void display() {
-		Iterator<Bubble> ite = current.iterator();
+		Set<Entry<String,List<Bubble>>> set = current.entrySet();
+		Iterator<Entry<String,List<Bubble>>> ite = set.iterator();
 		while(ite.hasNext()) {
-			System.out.println(ite.next().toString());
+			Entry<String,List<Bubble>> e = ite.next();
+			System.out.println(e.getKey() + " "+e.getValue());
 		}
 	}
 }

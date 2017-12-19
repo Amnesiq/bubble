@@ -1,7 +1,7 @@
 package org.bouvimbert.bubble.test;
 
-import org.bouvimbert.bubble.bubblegenerator.BubbleGenerator;
-import org.bouvimbert.bubble.bubblegenerator.impl.BubbleGeneratorImpl;
+import org.bouvimbert.bubble.service.BubbleGenerator;
+import org.bouvimbert.bubble.service.impl.BubbleGeneratorImpl;
 
 public class Main {
 
